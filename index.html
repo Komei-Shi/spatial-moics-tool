@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>芯空一号策略匹配助手</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>芯空一号 · 多组学技术平台匹配助手</h1>
+            <p>重塑空间组学研究新范式，开启时空图谱新纪元</p>
+        </header>
+
+        <!-- 筛选条件 -->
+        <div class="filter-section">
+            <div class="filter-row">
+                <div class="filter-item">
+                    <label>研究类型</label>
+                    <select id="studyType">
+                        <option value="transcriptome">空间转录组</option>
+                        <option value="proteome">空间蛋白组</option>
+                        <option value="multi">多组学联合</option>
+                    </select>
+                </div>
+                
+                <div class="filter-item">
+                    <label>物种类型</label>
+                    <select id="species">
+                        <option value="human">人类</option>
+                        <option value="mouse">小鼠</option>
+                        <option value="multi">多物种</option>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label>样本类型</label>
+                    <select id="sampleType">
+                        <option value="FF">新鲜冰冻 (FF)</option>
+                        <option value="FFPE">FFPE</option>
+                        <option value="TMA">组织芯片 (TMA)</option>
+                    </select>
+                </div>
+
+                <button onclick="matchPlatforms()">开始匹配</button>
+            </div>
+        </div>
+
+        <!-- 结果展示 -->
+        <div id="results" class="results-container"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
