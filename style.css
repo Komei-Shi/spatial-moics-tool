@@ -1,136 +1,228 @@
-/* style.css */
+/* style.css - 现代浅色响应式主题 */
 :root {
-    --primary: #2563eb;
-    --secondary: #3b82f6;
-    --accent: #60a5fa;
-    --text: #1e293b;
-    --bg: #f8fafc;
+  /* 调色板 */
+  --primary: #2563eb;          /* 主蓝 */
+  --primary-hover: #3b7cff;    /* 悬停色 */
+  --background: #F9FAFB;       /* 页面背景 */
+  --surface: #FFFFFF;          /* 卡片背景 */
+  --border: #E0E4E8;           /* 边框颜色 */
+  --text-primary: #2D3748;     /* 主文本 */
+  --text-secondary: #718096;   /* 副文本 */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+/* 基础样式 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--text-primary);
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
+  background-color: var(--background);
+  padding: 1rem;
 }
 
+/* 容器布局 */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
+/* 标题区 */
 .header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-.header h1 {
-    font-size: 2.5rem;
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 1.5rem;
+  
+  h1 {
+    font-size: 2.25rem;
     color: var(--primary);
     margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
 }
 
-/* 筛选条件 */
-.filter-section {
-    background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-}
-
-.filter-row {
+/* 筛选面板 */
+.filter-panel {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+  
+  .filter-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr) auto;
-    gap: 1.5rem;
-    align-items: end;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 }
 
-.filter-item label {
+/* 筛选组件 */
+.filter-group {
+  label {
     display: block;
     margin-bottom: 0.5rem;
+    color: var(--text-secondary);
     font-weight: 500;
-    color: var(--text);
-}
-
-select {
+  }
+  
+  select {
     width: 100%;
     padding: 0.75rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 0.5rem;
-    background: white;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background-color: white;
+    font-size: 1rem;
     transition: all 0.2s;
-}
-select:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    
+    &:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(74, 108, 170, 0.1);
+    }
+  }
 }
 
-button {
-    padding: 0.75rem 1.5rem;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-button:hover {
-    background: var(--secondary);
+/* 主按钮 */
+.main-button {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  margin-top: 1rem;
+  
+  &:hover {
+    background: var(--primary-hover);
     transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
 }
 
-/* 结果展示 */
-.results-container {
-    display: grid;
-    gap: 1.5rem;
+/* 结果卡片 */
+.results-grid {
+  display: grid;
+  gap: 1.5rem;
 }
 
 .platform-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    border-left: 4px solid var(--primary);
-}
-
-.platform-header {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #e2e8f0;
-}
-.platform-header h2 {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  
+  h2 {
     color: var(--primary);
-    margin: 0 0 0.5rem;
-}
-
-.params-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-}
-
-.param-item {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .params-table {
+    width: 100%;
+    margin: 1.25rem 0;
+    border-collapse: collapse;
+    
+    th, td {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+    }
+    
+    th {
+      background: rgba(74, 108, 170, 0.05);
+      width: 30%;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+  }
+  
+  .platform-description {
     padding: 1rem;
-    background: #f8fafc;
-    border-radius: 0.5rem;
-}
-.param-item strong {
-    display: block;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    background: rgba(74, 108, 170, 0.03);
+    color: var(--text-secondary);
+    
+    strong {
+      color: var(--text-primary);
+    }
+    
+    ul {
+      padding-left: 1.25rem;
+      margin: 0.75rem 0;
+    }
+  }
 }
 
-.scenario-list {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #e2e8f0;
+/* 空状态 */
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  
+  ul {
+    list-style: none;
+    margin-top: 1rem;
+  }
 }
-.scenario-tag {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background: #dbeafe;
-    color: var(--primary);
-    border-radius: 9999px;
-    margin: 0 0.5rem 0.5rem 0;
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .container {
+    padding: 0.5rem;
+  }
+  
+  .header {
+    padding: 1.5rem 0;
+    
+    h1 {
+      font-size: 1.75rem;
+    }
+  }
+  
+  .platform-card {
+    padding: 1rem;
+    
+    .params-table {
+      th, td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+/* 平板优化 */
+@media (min-width: 640px) and (max-width: 1024px) {
+  .filter-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
