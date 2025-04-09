@@ -124,7 +124,7 @@ body {
   display: block;
   width: max-content;
   max-width: 80%;
-  margin: 1.5rem auto 0;
+  margin: 1rem auto 0;
   padding: 0.8rem 2rem;
   color: var(--text-secondary);
   background: rgba(255,255,255,0.85);
